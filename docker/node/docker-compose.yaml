@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  node:
+    build: .
+    image: node-app
+    container_name: node
+    networks:
+      customnet:
+        ipv4_address: 171.1.0.10
+    volumes:
+      - /home/bernardo/fullcycle/docker/node:/usr/src/app
+    tty: true
+    restart: always
+
+
+networks:
+  customnet:
+    external: true

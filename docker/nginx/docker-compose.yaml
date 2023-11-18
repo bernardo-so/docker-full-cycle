@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    build: .
+    image: nginx-server
+    container_name: nginx
+    ports:
+      - "8080:80"
+    networks:
+      customnet:
+        ipv4_address: 171.1.0.5
+    restart: always
+
+networks:
+  customnet:
+    external: true
