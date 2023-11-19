@@ -23,6 +23,8 @@ Para executar este projeto, você precisará ter o Docker e o Docker Compose ins
 Após executar este comando, os serviços do Nginx, Node.js e MySQL serão iniciados.
 
 2. **Iniciar os Serviços com Docker Compose:**
+   ```bash
+   gdocker compose -d -up --build
 Após executar este comando, os serviços do Nginx, Node.js e MySQL serão iniciados.
 
 3. **Acessar a Aplicação:**
@@ -31,7 +33,8 @@ Abra o navegador e acesse `http://localhost:8080`. Você verá a mensagem "Full 
 ## Estrutura do Projeto
 
 - `/nginx`: Contém a configuração do Nginx.
-- `/app`: Código fonte da aplicação Node.js.
+- `/node`: Código fonte da aplicação Node.js.
+- `/mysql`: Backup do banco de dados MySQL.
 - `docker-compose.yml`: Define os serviços, redes e volumes utilizados no projeto.
 
 ## Tecnologias Utilizadas
