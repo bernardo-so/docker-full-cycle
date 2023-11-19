@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  node:
+    build: 
+      context: node
+    image: node-app
+    container_name: node
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s npm start
+    networks:
+      customnet:
+        ipv4_address: 171.1.0.10
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    restart: always
+    depends_on:
+      - db
+
+  nginx:
+    build:
+      context: nginx
+    image: nginx-server
+    container_name: nginx
+    ports:
+      - "8080:80"
+    networks:
+      customnet:
+        ipv4_address: 171.1.0.5
+    tty: true
+    restart: always
+
+  db: 
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      customnet:
+        ipv4_address: 171.1.0.15
+
+networks:
+  customnet:
+    external: true
