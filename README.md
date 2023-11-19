@@ -24,7 +24,7 @@ Após executar este comando, os serviços do Nginx, Node.js e MySQL serão inici
 
 2. **Iniciar os Serviços com Docker Compose:**
    ```bash
-   gdocker compose -d -up --build
+   docker compose -d -up --build
 Após executar este comando, os serviços do Nginx, Node.js e MySQL serão iniciados.
 
 3. **Acessar a Aplicação:**
